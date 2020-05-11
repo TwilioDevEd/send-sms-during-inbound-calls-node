@@ -37,6 +37,8 @@ function sendSms(caller, twilioNumber) {
     .done();
 }
 
-app.listen(8000);
+app.listen(8000, function(){
+  console.log('Send SMS During Inbound Calls listening on port 8000!')
+});
 
 module.exports = app;

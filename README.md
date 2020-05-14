@@ -4,6 +4,8 @@
 
 # Send an SMS during a phone call. Powered by Twilio and Node/Express
 
+![](https://github.com/TwilioDevEd/send-sms-during-inbound-calls-node/workflows/Node.js/badge.svg)
+
 > We are currently in the process of updating this sample template. If you are encountering any issues with the sample, please open an issue at [github.com/twilio-labs/code-exchange/issues](https://github.com/twilio-labs/code-exchange/issues) and we'll try to help you.
 
 Learn how to send an SMS to someone who's called your Twilio phone number while they're on the call.
@@ -15,7 +17,11 @@ This small sample application will say a short message to an inbound caller and,
 
 ## Local Development
 
-This project is built using the [Express](https://expressjs.com/) web framework, Node v10, and the [Twilio Node Helper Library](https://www.twilio.com/docs/libraries/node).
+### Requirements
+
+This project is built using the [Express](https://expressjs.com/) and the [Twilio Node Helper Library](https://www.twilio.com/docs/libraries/node) web framework, you should install Node v10 or v12.
+
+### Set up
 
 1. First clone this repository and `cd` into it.
 
@@ -30,29 +36,34 @@ This project is built using the [Express](https://expressjs.com/) web framework,
     $ npm install
     ```
 
-1. Create an environment file (`.env`) and define your Twilio Account SID and Auth Token. Both of these can be found in your [Twilio console](https://www.twilio.com/console).
-
-   ```bash
-   export ACCOUNT_SID=ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   export AUTH_TOKEN=your_auth_token
-   ```
-
-1. Load the created file into your environment.
+1. Copy the sample configuration file and edit it to match your configuration.
 
     ```bash
-    source .env
+    $ cp .env.example .env
     ```
 
-1. Start the server.
+    | Config Value  | Description |
+    | :-------------  |:------------- |
+    `TWILIO_ACCOUNT_SID` / `TWILIO_AUTH_TOKEN` | In [Twilio Account Settings](https://www.twilio.com/console).
+
+1. Make sure the tests succeed
 
     ```bash
-    $ node app.js
+    $ npm test
     ```
 
-1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/).
+### Try it out!
+
+1. Start the server, the following command will run the application on port 8000.
 
     ```bash
-    $ ngrok http 8000 -host-header="localhost:8000"
+    $ npm start
+    ```
+
+1. Expose the application to the wider Internet using [ngrok](https://ngrok.com/). This step **is important** because the application won't work as expected if you run it through localhost.
+
+    ```bash
+    $ ngrok http 8000
     ```
 
 1. Configure Twilio to call your webhooks
@@ -65,9 +76,11 @@ This project is built using the [Express](https://expressjs.com/) web framework,
   https://<your-ngrok-subdomain>.ngrok.io/answer
   ```
 
+That's it!
 
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
+* The CodeExchange repository can be found [here](https://github.com/twilio-labs/code-exchange/).
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
 * Lovingly crafted by Twilio Developer Education.

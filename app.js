@@ -1,25 +1,28 @@
+require('dotenv').config();
+
 const express = require('express');
-const bodyParser = require('body-parser')
-const voiceResponse = require('twilio').twiml.VoiceResponse
+const bodyParser = require('body-parser');
+const voiceResponse = require('twilio').twiml.VoiceResponse;
 
-const app = express()
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.all('/answer', (req, res) => {
-  const caller = req.body.From
-  const twilioNumber = req.body.To
-  sendSms(caller, twilioNumber)
+  const caller = req.body.From;
+  const twilioNumber = req.body.To;
+  sendSms(caller, twilioNumber);
 
-  const r = new voiceResponse()
-  r.say('Thanks for calling! We just sent you a text with a clue.')
-  res.send(r.toString())
-})
+  const r = new voiceResponse();
+  r.say('Thanks for calling! We just sent you a text with a clue.');
+  res.send(r.toString());
+});
 
 function sendSms(caller, twilioNumber) {
-  const accountSid = process.env.ACCOUNT_SID
-  const authToken = process.env.AUTH_TOKEN
-  const client = require('twilio')(accountSid, authToken)
+  const accountSid = process.env.ACCOUNT_SID;
+  const authToken = process.env.AUTH_TOKEN;
+  const client = require('twilio')(accountSid, authToken);
 
   return client.messages.create({
     body: "There's always money in the banana stand.",
@@ -31,7 +34,11 @@ function sendSms(caller, twilioNumber) {
         console.log("Uh oh, looks like this caller can't receive SMS messages.")
       }
     })
-    .done()
+    .done();
 }
 
-app.listen(8000);
+app.listen(8000, function(){
+  console.log('Send SMS During Inbound Calls listening on port 8000!')
+});
+
+module.exports = app;

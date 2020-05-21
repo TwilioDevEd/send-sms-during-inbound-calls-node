@@ -78,10 +78,8 @@ Before we begin, we need to collect all the config values we need to run the app
    You will need to configure Twilio to call your application when calls are received in your [*Twilio Number*](https://www.twilio.com/console/phone-numbers/incoming). The Voice URL should look something like this:
 
    ```
-   https://4181ba96.ngrok.io/answer
+   https://0f72e8a8.ngrok.io/answer
    ```
-
-   ![](images/number-voice-url.png)
 
 That's it!
 

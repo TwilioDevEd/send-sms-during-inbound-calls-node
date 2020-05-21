@@ -81,6 +81,8 @@ Before we begin, we need to collect all the config values we need to run the app
    https://0f72e8a8.ngrok.io/answer
    ```
 
+7. Call your Twilio number to test it out.
+
 That's it!
 
 ### Tests

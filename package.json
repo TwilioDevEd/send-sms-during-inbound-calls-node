@@ -18,7 +18,7 @@
     "mocha": "^7.1.2"
   },
   "scripts": {
-    "test": "NODE_ENV=test && mocha spec/ --exit",
+    "test": "mocha spec/ --exit",
     "start": "node app.js"
   },
   "author": "",

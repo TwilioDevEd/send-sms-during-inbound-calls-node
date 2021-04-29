@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: chai
+    versions:
+    - 4.3.4
+  - dependency-name: twilio
+    versions:
+    - 3.51.0
+  - dependency-name: mocha
+    versions:
+    - 8.2.1
